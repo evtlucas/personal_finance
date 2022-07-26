@@ -44,14 +44,10 @@ class Account < ApplicationRecord
   private
 
   def transform_outcomes
-    financial_record.outcomes.map(&:transform_financial_record)
+    financial_record.outcomes.map(&:as_hash)
   end
 
   def transform_incomes
-    financial_record.incomes.map(&:transform_financial_record)
-  end
-
-  def transform_financial_record(fr)
-    fr.as_hash
+    financial_record.incomes.map(&:as_hash)
   end
 end

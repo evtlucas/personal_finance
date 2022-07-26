@@ -34,6 +34,7 @@ RSpec.describe Account, type: :model do
 
     it "assesses the content of the hash" do
       expect(account_content).to include(name: account.name)
+      expect(account_content).to include(balance: account.balance)
       expect(account_content).to include(outcomes: account.financial_record.outcomes.map{ |fr| fr.as_hash })
     end
   end

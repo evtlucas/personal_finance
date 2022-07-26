@@ -35,7 +35,8 @@ class Account < ApplicationRecord
   def as_hash
     return {
       'name': name,
-      'outcomes': transform_outcomes
+      'outcomes': transform_outcomes,
+      'balance': balance
     }
   end
 

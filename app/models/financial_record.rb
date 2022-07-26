@@ -9,6 +9,10 @@ class FinancialRecord < ApplicationRecord
   validate :record_date_must_be_registered_today_or_in_the_past
   validate :value_must_not_be_zero
 
+  scope :outcomes, -> {
+    where('financial_records.value < 0')
+  }
+
   enum category: {
     dwelling: 0,
     grocery_store: 1,

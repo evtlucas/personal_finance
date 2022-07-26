@@ -6,14 +6,14 @@ class Account < ApplicationRecord
 
   has_many :financial_record
 
-  scope :incomes, -> (account_id) { 
+  scope :total_incomes, -> (account_id) { 
     joins('JOIN financial_records ON financial_records.account_id = accounts.id')
     .where('financial_records.value > 0')
     .where(financial_records: { 'account_id': account_id })
     .sum(:value)
   }
 
-  scope :outcomes, -> (account_id) { 
+  scope :total_outcomes, -> (account_id) { 
     joins('JOIN financial_records ON financial_records.account_id = accounts.id')
     .where('financial_records.value < 0')
     .where(financial_records: { 'account_id': account_id })
@@ -21,11 +21,11 @@ class Account < ApplicationRecord
   }
 
   def total_incomes
-    Account.incomes(id)
+    Account.total_incomes(id)
   end
 
   def total_outcomes
-    Account.outcomes(id)
+    Account.total_outcomes(id)
   end
 
   def balance
@@ -42,6 +42,6 @@ class Account < ApplicationRecord
   private
 
   def transform_outcomes
-    financial_record.select{ |fr| fr.value < 0 }.map{ |fr| fr.as_hash }
+    financial_record.outcomes.map{ |fr| fr.as_hash }
   end
 end

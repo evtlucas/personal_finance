@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gs1:
+  description: Grocery Store
+  value: -85.14
+  category: 1
+  account: account
+  record_date: <%= 5.days.ago.to_s(:db) %>
+
+gs2:
+  description: Grocery Store
+  value: -96.14
+  category: 1
+  account: account
+  record_date: <%= 5.days.ago.to_s(:db) %>
+
+income:
+  description: income
+  value: 1000
+  category: 9
+  account: account
+  record_date: <%= 5.days.ago.to_s(:db) %>

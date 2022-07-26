@@ -1,0 +1,25 @@
+<%= form_with model: [ @account, @account.financial_record.build ] do |f| %>
+  <div>
+    <%= f.label :record_date %>
+    <%= f.text_field :record_date %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select(FinancialRecord.categories.map { |key, value| [key, key] }) %>
+  </div>
+
+  <div>
+    <%= f.label :value %>
+    <%= f.text_field :value %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

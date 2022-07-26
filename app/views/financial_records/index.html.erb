@@ -1,0 +1,26 @@
+<h2>Lançamentos</h2>
+
+<h4>Conta: <%= @account.name %></h4>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Descrição</th>
+    <th>Categoria</th>
+    <th>Valor</th>
+    <th>&nbsp;</th>
+  <tr>
+  <% @financial_records.each do |fr| %>
+    <tr>
+      <td><%= fr.record_date %></td>
+      <td><%= fr.description %></td>
+      <td><%= fr.category %></td>
+      <td><%= fr.value %></td>
+      <td><%= link_to "Excluir", account_path(fr),
+                method: :delete,
+                data: { confirm: "Tem certeza que deseja excluir?" } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Novo lançamento", new_account_financial_record_path %>

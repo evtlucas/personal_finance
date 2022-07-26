@@ -1,0 +1,10 @@
+<h2>Outcomes</h2>
+
+<% @accounts.each do |account| %>
+  <p>Account: <%= account[:account] %></p>
+  <ul>
+    <% account[:outcomes].each do |outcome| %>
+      <li><%= outcome[:description] %> - <%= outcome[:category] %> - <%= outcome[:value] %></li>
+    <% end %>
+  </ul>
+<% end %>

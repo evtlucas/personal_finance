@@ -24,6 +24,15 @@ class FinancialRecord < ApplicationRecord
     finance: 11,
     education: 12
   }
+  
+  def as_hash
+    {
+      'description': description,
+      'category': category,
+      'value': value,
+      'record_date': record_date.to_s
+    }
+  end
 
   private
 

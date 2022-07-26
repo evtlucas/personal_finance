@@ -6,7 +6,7 @@ class AccountsSummary
   def execute
     accounts = []
     Account.all.each do |account|
-      accounts << account.outcomes_as_hash
+      accounts << account.as_hash
     end
     accounts
   end

@@ -32,9 +32,9 @@ class Account < ApplicationRecord
     total_incomes - (-total_outcomes)
   end
 
-  def outcomes_as_hash
+  def as_hash
     return {
-      'account': name,
+      'name': name,
       'outcomes': transform_outcomes
     }
   end

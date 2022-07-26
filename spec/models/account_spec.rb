@@ -28,4 +28,13 @@ RSpec.describe Account, type: :model do
       expect(account.balance).to be_equal(818.72)
     end
   end
+
+  describe "#as_hash" do
+    subject(:account_content) { account.as_hash }
+
+    it "assesses the content of the hash" do
+      expect(account_content).to include(name: account.name)
+      expect(account_content).to include(outcomes: account.financial_record.outcomes.map{ |fr| fr.as_hash })
+    end
+  end
 end

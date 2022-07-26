@@ -20,3 +20,10 @@ income:
   category: 9
   account: account
   record_date: <%= 5.days.ago.to_s(:db) %>
+
+income2:
+  description: income
+  value: 1000
+  category: 9
+  account: account2
+  record_date: <%= 5.days.ago.to_s(:db) %>

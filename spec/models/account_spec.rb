@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Account, type: :model do
   fixtures :accounts
+  fixtures :financial_records
   
-  let(:account) { accounts(:account) }
+  subject(:account) { accounts(:account) }
 
   describe "associations" do
     it { is_expected.to have_many(:financial_record)}
@@ -12,5 +13,19 @@ RSpec.describe Account, type: :model do
   describe "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
+  end
+
+  describe "calculations" do
+    it "should calculate the total of incomes" do
+      expect(account.incomes).to be_equal(1000)
+    end
+
+    it "should calculate the total of outcomes" do
+      expect(account.outcomes).to be_equal(-181.28)
+    end
+
+    it "should calculate the balance" do
+      expect(account.balance).to be_equal(818.72)
+    end
   end
 end

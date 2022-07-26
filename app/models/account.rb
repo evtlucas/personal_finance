@@ -6,6 +6,32 @@ class Account < ApplicationRecord
 
   has_many :financial_record
 
+  scope :incomes, -> (account_id) { 
+    joins('JOIN financial_records ON financial_records.account_id = accounts.id')
+    .where('financial_records.value > 0')
+    .where(financial_records: { 'account_id': account_id })
+    .sum(:value)
+  }
+
+  scope :outcomes, -> (account_id) { 
+    joins('JOIN financial_records ON financial_records.account_id = accounts.id')
+    .where('financial_records.value < 0')
+    .where(financial_records: { 'account_id': account_id })
+    .sum(:value)
+  }
+
+  def incomes
+    Account.incomes(id)
+  end
+
+  def outcomes
+    Account.outcomes(id)
+  end
+
+  def balance
+    incomes - (-outcomes)
+  end
+
   def outcomes_as_hash
     return {
       'account': name,

@@ -35,14 +35,23 @@ class Account < ApplicationRecord
   def as_hash
     return {
       'name': name,
+      'balance': balance,
       'outcomes': transform_outcomes,
-      'balance': balance
+      'incomes': transform_incomes
     }
   end
 
   private
 
   def transform_outcomes
-    financial_record.outcomes.map{ |fr| fr.as_hash }
+    financial_record.outcomes.map(&:transform_financial_record)
+  end
+
+  def transform_incomes
+    financial_record.incomes.map(&:transform_financial_record)
+  end
+
+  def transform_financial_record(fr)
+    fr.as_hash
   end
 end

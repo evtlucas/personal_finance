@@ -13,6 +13,10 @@ class FinancialRecord < ApplicationRecord
     where('financial_records.value < 0')
   }
 
+  scope :incomes, -> {
+    where('financial_records.value > 0')
+  }
+
   enum category: {
     dwelling: 0,
     grocery_store: 1,

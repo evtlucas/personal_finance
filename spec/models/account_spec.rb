@@ -36,6 +36,7 @@ RSpec.describe Account, type: :model do
       expect(account_content).to include(name: account.name)
       expect(account_content).to include(balance: account.balance)
       expect(account_content).to include(outcomes: account.financial_record.outcomes.map{ |fr| fr.as_hash })
+      expect(account_content).to include(incomes: account.financial_record.incomes.map{ |fr| fr.as_hash })
     end
   end
 end

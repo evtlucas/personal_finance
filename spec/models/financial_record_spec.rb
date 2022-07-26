@@ -16,58 +16,19 @@ RSpec.describe FinancialRecord, type: :model do
   end
 
   it "is not valid without a description" do
-    invalid_record = FinancialRecord.new(
-      description: nil,
-      value: 1,
-      category: 1,
-      account: account,
-      record_date: 1.day.ago
-    )
-    expect(invalid_record).to_not be_valid
+    should validate_presence_of(:description)
   end
 
   it "is not valid without a value" do
-    invalid_record = FinancialRecord.new(
-      description: 'test',
-      value: nil,
-      category: 1,
-      account: account,
-      record_date: 1.day.ago
-    )
-    expect(invalid_record).to_not be_valid
+    should validate_presence_of(:value)
   end
 
   it "is not valid without a category" do
-    invalid_record = FinancialRecord.new(
-      description: 'test',
-      value: -100,
-      category: nil,
-      account: account,
-      record_date: 1.day.ago
-    )
-    expect(invalid_record).to_not be_valid
-  end
-
-  it "is not valid without an account" do
-    invalid_record = FinancialRecord.new(
-      description: 'test',
-      value: -100,
-      category: 1,
-      account: nil,
-      record_date: 1.day.ago
-    )
-    expect(invalid_record).to_not be_valid
+    should validate_presence_of(:category)
   end
 
   it "is not valid without a record date" do
-    invalid_record = FinancialRecord.new(
-      description: 'test',
-      value: -100,
-      category: 1,
-      account: account,
-      record_date: nil
-    )
-    expect(invalid_record).to_not be_valid
+    should validate_presence_of(:record_date)
   end
 
   it "is valid when value is greater than zero" do

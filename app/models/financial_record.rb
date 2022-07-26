@@ -7,6 +7,7 @@ class FinancialRecord < ApplicationRecord
   validates_presence_of :category
   validates_presence_of :record_date
   validate :record_date_must_be_registered_today_or_in_the_past
+  validate :value_must_not_be_zero
 
   enum category: {
     dwelling: 0,
@@ -29,6 +30,12 @@ class FinancialRecord < ApplicationRecord
   def record_date_must_be_registered_today_or_in_the_past
     if record_date.present? && record_date > Date.today
       errors.add(:record_date, "can't be in the future")
+    end
+  end
+
+  def value_must_not_be_zero
+    if value.present? && value == 0
+      errors.add(:value, "can't be zero")
     end
   end
 end

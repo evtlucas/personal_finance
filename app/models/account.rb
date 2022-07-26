@@ -20,16 +20,16 @@ class Account < ApplicationRecord
     .sum(:value)
   }
 
-  def incomes
+  def total_incomes
     Account.incomes(id)
   end
 
-  def outcomes
+  def total_outcomes
     Account.outcomes(id)
   end
 
   def balance
-    incomes - (-outcomes)
+    total_incomes - (-total_outcomes)
   end
 
   def outcomes_as_hash

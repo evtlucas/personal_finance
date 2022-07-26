@@ -17,11 +17,11 @@ RSpec.describe Account, type: :model do
 
   describe "calculations" do
     it "should calculate the total of incomes" do
-      expect(account.incomes).to be_equal(1000)
+      expect(account.total_incomes).to be_equal(1000)
     end
 
     it "should calculate the total of outcomes" do
-      expect(account.outcomes).to be_equal(-181.28)
+      expect(account.total_outcomes).to be_equal(-181.28)
     end
 
     it "should calculate the balance" do

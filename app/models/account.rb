@@ -6,26 +6,12 @@ class Account < ApplicationRecord
 
   has_many :financial_record
 
-  scope :total_incomes, -> (account_id) { 
-    joins('JOIN financial_records ON financial_records.account_id = accounts.id')
-    .where('financial_records.value > 0')
-    .where(financial_records: { 'account_id': account_id })
-    .sum(:value)
-  }
-
-  scope :total_outcomes, -> (account_id) { 
-    joins('JOIN financial_records ON financial_records.account_id = accounts.id')
-    .where('financial_records.value < 0')
-    .where(financial_records: { 'account_id': account_id })
-    .sum(:value)
-  }
-
   def total_incomes
-    Account.total_incomes(id)
+    financial_record.incomes.sum(:value)
   end
 
   def total_outcomes
-    Account.total_outcomes(id)
+    financial_record.outcomes.sum(:value)
   end
 
   def balance

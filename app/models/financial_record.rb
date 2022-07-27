@@ -32,7 +32,7 @@ class FinancialRecord < ApplicationRecord
     finance: 11,
     education: 12
   }
-  
+
   def as_hash
     {
       'description': description,

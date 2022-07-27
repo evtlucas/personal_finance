@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'bigdecimal'
 
 RSpec.describe Account, type: :model do
   fixtures :accounts
@@ -17,15 +18,15 @@ RSpec.describe Account, type: :model do
 
   describe "calculations" do
     it "should calculate the total of incomes" do
-      expect(account.total_incomes).to be_equal(1000)
+      expect(account.total_incomes).to eql(BigDecimal("1000"))
     end
 
     it "should calculate the total of outcomes" do
-      expect(account.total_outcomes).to be_equal(-181.28)
+      expect(account.total_outcomes).to eql(BigDecimal("-181.28"))
     end
 
     it "should calculate the balance" do
-      expect(account.balance).to be_equal(818.72)
+      expect(account.balance).to eql(BigDecimal("818.72"))
     end
   end
 

@@ -30,13 +30,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'active_model_serializers', '~> 0.10.13'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'shoulda-matchers', '~> 5.1.0'
-  gem 'rails-controller-testing'
 end
 
 group :development do

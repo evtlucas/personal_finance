@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
+  include ActiveModel::Serialization
+
   validates_presence_of :name
   validates :name, uniqueness: true
 
@@ -18,22 +20,20 @@ class Account < ApplicationRecord
     total_incomes - (-total_outcomes)
   end
 
-  def as_hash
-    return {
-      'name': name,
-      'balance': balance,
-      'outcomes': transform_outcomes,
-      'incomes': transform_incomes
-    }
-  end
-
-  private
-
-  def transform_outcomes
+  def outcomes
     financial_record.outcomes.map(&:as_json)
   end
 
-  def transform_incomes
+  def incomes
     financial_record.incomes.map(&:as_json)
+  end
+
+  def attributes
+    {
+      'name' => name,
+      'balance' => balance,
+      'outcomes' => outcomes,
+      'incomes' => incomes
+    }
   end
 end

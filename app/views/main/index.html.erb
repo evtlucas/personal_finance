@@ -5,13 +5,13 @@
   <p>Balance: <%= account[:balance] %></p>
   <h4>List of Incomes</h4>
   <ul>
-    <% account[:incomes].each do |income| %>
+    <% account[:incomes]&.each do |income| %>
       <li><%= income[:description] %> - <%= income[:category] %> - <%= income[:value] %></li>
     <% end %>
   </ul>
   <h4>List of Outcomes</h4>
   <ul>
-    <% account[:outcomes].each do |outcome| %>
+    <% account[:outcomes]&.each do |outcome| %>
       <li><%= outcome[:description] %> - <%= outcome[:category] %> - <%= outcome[:value] %></li>
     <% end %>
   </ul>

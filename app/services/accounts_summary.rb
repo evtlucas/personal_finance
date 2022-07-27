@@ -6,7 +6,7 @@ class AccountsSummary
   def execute
     accounts = []
     Account.all.each do |account|
-      accounts << account.as_hash
+      accounts << account.as_json
     end
     accounts
   end

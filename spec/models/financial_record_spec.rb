@@ -64,12 +64,12 @@ RSpec.describe FinancialRecord, type: :model do
   end
 
   describe "#as_hash" do
-    subject(:record_content) { record.as_hash }
+    subject(:record_content) { record.as_json }
     it "assesses the content of the hash" do
-      expect(record_content).to include(description: record.description)
-      expect(record_content).to include(value: record.value)
-      expect(record_content).to include(category: record.category)
-      expect(record_content).to include(record_date: record.record_date.to_s)
+      expect(record_content['description']).to eql(record.description)
+      expect(record_content['value']).to eql(record.value.to_s)
+      expect(record_content['category']).to eql(record.category)
+      expect(record_content['record_date']).to eql(record.record_date.to_s)
     end
   end
 end

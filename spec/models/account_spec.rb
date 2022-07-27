@@ -31,13 +31,13 @@ RSpec.describe Account, type: :model do
   end
 
   describe "#as_hash" do
-    subject(:account_content) { account.as_hash }
+    subject(:account_content) { account.as_json }
 
     it "assesses the content of the hash" do
-      expect(account_content).to include(name: account.name)
-      expect(account_content).to include(balance: account.balance)
-      expect(account_content).to include(outcomes: account.financial_record.outcomes.map{ |fr| fr.as_json })
-      expect(account_content).to include(incomes: account.financial_record.incomes.map{ |fr| fr.as_json })
+      expect(account_content['name']).to eql(account.name)
+      expect(account_content['balance']).to eql(account.balance.to_s)
+      expect(account_content['outcomes']).to match_array(account.financial_record.outcomes.map{ |fr| fr.as_json })
+      expect(account_content['incomes']).to match_array(account.financial_record.incomes.map{ |fr| fr.as_json })
     end
   end
 end

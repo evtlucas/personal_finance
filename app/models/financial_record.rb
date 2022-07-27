@@ -33,15 +33,6 @@ class FinancialRecord < ApplicationRecord
     education: 12
   }
 
-  def as_hash
-    {
-      'description': description,
-      'category': category,
-      'value': value,
-      'record_date': record_date.to_s
-    }
-  end
-
   private
 
   def record_date_must_be_registered_today_or_in_the_past

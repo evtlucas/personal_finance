@@ -30,10 +30,10 @@ class Account < ApplicationRecord
   private
 
   def transform_outcomes
-    financial_record.outcomes.map(&:as_hash)
+    financial_record.outcomes.map(&:as_json)
   end
 
   def transform_incomes
-    financial_record.incomes.map(&:as_hash)
+    financial_record.incomes.map(&:as_json)
   end
 end

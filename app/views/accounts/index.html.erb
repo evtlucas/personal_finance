@@ -9,10 +9,10 @@
   <% @accounts.each do |account| %>
     <tr>
       <td><%= link_to account.name, edit_account_path(account) %></td>
-      <td><%= link_to "Lançamentos da conta", account_financial_records_path(account) %></td>
-      <td><%= link_to "Excluir", account_path(account),
+      <td><%= link_to "Financial Records", account_financial_records_path(account) %></td>
+      <td><%= link_to "Delete", account_path(account),
                 method: :delete,
-                data: { confirm: "Tem certeza que deseja excluir?" } %>
+                data: { confirm: "Are you sure?" } %>
     </tr>
   <% end %>
 </table>

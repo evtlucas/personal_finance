@@ -13,10 +13,10 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
 
     if @account.save
-      flash[:notice] = 'Conta salva com sucesso'
+      flash[:notice] = 'Account saved with success'
       redirect_to :accounts
     else
-      flash[:notice] = 'Erro ao salvar conta'
+      flash[:notice] = 'Error during account saving process'
       render :new
     end
   end
@@ -29,10 +29,10 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
 
     if @account.update(account_params)
-      flash[:notice] = 'Conta atualizada com sucesso'
+      flash[:notice] = 'Account updated with success'
       redirect_to :accounts
     else
-      flash[:notice] = 'Erro ao salvar conta'
+      flash[:notice] = 'Error during account saving process'
       render :edit, status: :unprocessable_entity
     end
   end

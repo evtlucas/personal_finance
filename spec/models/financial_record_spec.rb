@@ -14,7 +14,7 @@ RSpec.describe FinancialRecord, type: :model do
     it { is_expected.to belong_to(:account) }
   end
 
-  describe 'is valid with ' do
+  describe 'is valid with' do
     it 'attributes' do
       expect(record).to be_valid
     end
@@ -53,8 +53,8 @@ RSpec.describe FinancialRecord, type: :model do
       invalid_record = described_class.new(
         description: 'test',
         value: 0,
-        category: 1,
-        account: account,
+        category: 'grocery_store',
+        account:,
         record_date: 1.days.ago
       )
       expect(invalid_record).not_to be_valid
@@ -64,8 +64,8 @@ RSpec.describe FinancialRecord, type: :model do
       invalid_record = described_class.new(
         description: 'test',
         value: -100,
-        category: 1,
-        account: account,
+        category: 'grocery_store',
+        account:,
         record_date: 1.days.since(Time.now)
       )
       expect(invalid_record).not_to be_valid

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_04_12_123940) do
   create_table "financial_records", force: :cascade do |t|
     t.text "description", null: false
     t.decimal "value", null: false
-    t.integer "category", default: 0, null: false
+    t.string "category", default: "dwelling", null: false
     t.integer "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

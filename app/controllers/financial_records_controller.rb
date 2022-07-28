@@ -15,7 +15,7 @@ class FinancialRecordsController < ApplicationController
     @financial_record = @account.financial_record.build(financial_record_params)
 
     if @financial_record.save
-      flash[:notice] = "Financial record created"
+      flash[:notice] = 'Financial record created'
       redirect_to :account_financial_records
     else
       flash[:notice] = 'Error during financial record saving process'
@@ -31,7 +31,7 @@ class FinancialRecordsController < ApplicationController
     @financial_record = FinancialRecord.find_by(id: params[:id], account: @account)
 
     if @financial_record.update(financial_record_params)
-      flash[:notice] = "Financial record created"
+      flash[:notice] = 'Financial record created'
       redirect_to :account_financial_records
     else
       flash[:notice] = 'Error during financial record saving process'

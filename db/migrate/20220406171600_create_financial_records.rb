@@ -5,7 +5,7 @@ class CreateFinancialRecords < ActiveRecord::Migration[6.1]
     create_table :financial_records do |t|
       t.text :description, null: false
       t.decimal :value, null: false
-      t.integer :category, null: false, default: 0
+      t.string :category, null: false, default: 'dwelling'
       t.references :account, null: false, foreign_key: true
 
       t.timestamps

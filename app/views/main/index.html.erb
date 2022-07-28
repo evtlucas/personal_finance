@@ -1,18 +1,18 @@
 <h2>Accounts</h2>
 
 <% @accounts.each do |account| %>
-  <p>Account: <%= account[:name] %></p>
-  <p>Balance: <%= account[:balance] %></p>
+  <p>Account: <%= account['name'] %></p>
+  <p>Balance: <%= account['balance'] %></p>
   <h4>List of Incomes</h4>
   <ul>
-    <% account[:incomes]&.each do |income| %>
-      <li><%= income[:description] %> - <%= income[:category] %> - <%= income[:value] %></li>
+    <% account['incomes']&.each do |income| %>
+      <li><%= income['description'] %> - <%= income['category'] %> - <%= income['value'] %></li>
     <% end %>
   </ul>
   <h4>List of Outcomes</h4>
   <ul>
-    <% account[:outcomes]&.each do |outcome| %>
-      <li><%= outcome[:description] %> - <%= outcome[:category] %> - <%= outcome[:value] %></li>
+    <% account['outcomes']&.each do |outcome| %>
+      <li><%= outcome['description'] %> - <%= outcome['category'] %> - <%= outcome['value'] %></li>
     <% end %>
   </ul>
 <% end %>

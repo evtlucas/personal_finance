@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class FinancialRecordsController < ApplicationController
-  before_action :authenticate_user!
   before_action :find_account
 
   def index

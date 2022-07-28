@@ -1,0 +1,75 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: disable
+  DisplayCopNames: true
+  Include:
+    - "**/*.rb"
+    - "**/*.rake"
+    - "**/Rakefile"
+    - "Gemfile"
+    - "**/config.ru"
+  Exclude:
+    - "bin/**/*"
+    - ".gems/**/*"
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "db/data_schema.rb"
+    - "db/seeds.rb"
+    - "scripts/template.rb"
+    - "bin/*"
+    - "node_modules/**/*"
+    - "app/resources/**/seed_job.rb"
+    - "lib/mailer_previews/*"
+    - "spec/spec_helper.rb"
+    - "config/initializers/devise.rb"
+
+Style/Documentation:
+  Enabled: false
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/BlockDelimiters:
+  Exclude:
+    - spec/**/*.rb
+
+ImplicitSubject:
+  EnforcedStyle: single_statement_only
+Style/FormatStringToken:
+  EnforcedStyle: unannotated
+Metrics/BlockLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Severity: refactor
+Layout/LineLength:
+  Max: 120
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/MessageSpies:
+  Enabled: false
+RSpec/LetSetup:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+Naming/VariableNumber:
+  Enabled: false

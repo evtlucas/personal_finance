@@ -8,8 +8,7 @@ class FinancialRecordsController < ApplicationController
     @financial_records = @account.financial_record
   end
 
-  def new
-  end
+  def new; end
 
   def create
     @financial_record = @account.financial_record.create(financial_record_params)

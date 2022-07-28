@@ -9,11 +9,11 @@ class FinancialRecord < ApplicationRecord
   validate :record_date_must_be_registered_today_or_in_the_past
   validate :value_must_not_be_zero
 
-  scope :outcomes, -> {
+  scope :outcomes, lambda {
     where('financial_records.value < 0')
   }
 
-  scope :incomes, -> {
+  scope :incomes, lambda {
     where('financial_records.value > 0')
   }
 
@@ -36,14 +36,10 @@ class FinancialRecord < ApplicationRecord
   private
 
   def record_date_must_be_registered_today_or_in_the_past
-    if record_date.present? && record_date > Date.today
-      errors.add(:record_date, "can't be in the future")
-    end
+    errors.add(:record_date, "can't be in the future") if record_date.present? && record_date > Date.today
   end
 
   def value_must_not_be_zero
-    if value.present? && value == 0
-      errors.add(:value, "can't be zero")
-    end
+    errors.add(:value, "can't be zero") if value.present? && value.zero?
   end
 end

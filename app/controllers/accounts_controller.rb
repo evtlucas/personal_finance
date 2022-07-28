@@ -2,7 +2,7 @@
 
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @accounts = Account.order(:name)
   end
@@ -15,10 +15,10 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
 
     if @account.save
-      flash[:notice] = "Conta salva com sucesso"
+      flash[:notice] = 'Conta salva com sucesso'
       redirect_to :accounts
     else
-      flash[:notice] = "Erro ao salvar conta"
+      flash[:notice] = 'Erro ao salvar conta'
       render :new
     end
   end
@@ -31,10 +31,10 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
 
     if @account.update(account_params)
-      flash[:notice] = "Conta atualizada com sucesso"
+      flash[:notice] = 'Conta atualizada com sucesso'
       redirect_to :accounts
     else
-      flash[:notice] = "Erro ao salvar conta"
+      flash[:notice] = 'Erro ao salvar conta'
       render :edit, status: :unprocessable_entity
     end
   end

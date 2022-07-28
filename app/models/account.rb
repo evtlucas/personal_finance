@@ -17,7 +17,7 @@ class Account < ApplicationRecord
   end
 
   def balance
-    total_incomes - (-total_outcomes)
+    total_incomes - -total_outcomes
   end
 
   def outcomes
